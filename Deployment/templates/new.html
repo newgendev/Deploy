@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>StrokeDetect</title>
+  <link rel="stylesheet" href="{{url_for('static',path = 'new.css')}}">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+  <header>
+    <img src="{{url_for('static',path = 'logo2.png')}}" alt="logo" class="logo">
+  </header>
+  
+  <div class="image-input-container">
+    <form onsubmit="event.preventDefault(); sendImage();">
+      <fieldset>
+      <div>
+        <img class="plus", src="{{url_for('static',path = 'pluslo.jpg')}}" alt="">
+        <h2>Upload an image to </h2>
+        <h3>detect and classify Stroke</h3>
+        <input type="submit", value="Upload Image" class="upload" onclick="document.getElementById('image').click()">
+        <p class="p">NB: Please this model is trained on only Brain CT scans</p>
+        
+      </div>
+
+      <div>
+        <input type = "file" id="image"  accept="image/*" onchange="handleuploadedImage()" >
+        <img id="preview-img" alt="">
+      </div>
+
+    </fieldset>
+    </form>
+    
+  </div>
+  <script>
+    function handleuploadedImage(){
+      const file = document.getElementById('image').files[0];
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        localStorage.setItem("uploadedImage",  e.target.result);
+        window.location.href = "/submit";
+      }
+      
+
+      if (file) {
+        reader.readAsDataURL(file)
+      }
+    }
+  </script>
+</body>
+</html>

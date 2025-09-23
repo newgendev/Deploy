@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{url_for('static',path='gtst.css')}}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started</title>
+</head>
+
+<body>
+    <div class="top">
+         <img src="{{url_for('static',path='logo2.png')}}" alt="" class="logo">
+         <input type="submit" class="button1", value="Sign-Up">
+         <input type="submit" class="button2", value="Sign-In">
+    </div>
+      <div  class="describ">
+        <div class="text">
+            <p class="title">Hello and Welcome</p>
+            <p class="short">Stroke or Cerebrovascular accidents is a medical condition
+                that disrupts the blood supply to the brain, depriving it of oxygen                 
+                and nutrients. It is one of the most deadliest diseases in the world. 
+                According to the World heath Organization upto 15million people 
+                globally gets affected. </br></br>Hence the objective  of this webapp, W
+                hich is to help 
+                medical professionals detect and classify stroke disease faster and more
+                accurately, by passing CT images of the brain into our trained Deep Learning model.</p>
+                <a href="/home"><input type="submit" class="continue", value="Get Started"></a>
+        </div>
+        <div class="line"></div>
+        <div class="image">
+            <div class="image1">
+                <div>
+                    <img src="{{url_for('static',path='test.jpg')}}" class="img" alt="">
+                </div>
+                <div>
+                    <img src="{{url_for('static',path='mri.jpg')}}" class="img" alt="">
+                </div>
+            </div>
+            <div class="image2">
+                <div>
+                    <img src="{{url_for('static',path='mri2.jpg')}}" class="img" alt="">
+                </div>
+                <div>
+                    <img src="{{url_for('static',path='scan.jpg')}}" class="img" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

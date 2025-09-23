@@ -1,0 +1,148 @@
+body{
+    background-image: url('bg.gif');
+    display: flexbox;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    background-size: cover;
+}
+
+.describ{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 2%;
+}
+
+.line{
+    position: absolute;
+  bottom: 1105px;
+  right: 300px;
+  width: 100%;
+    height: -200px;
+  border-top: 2px solid white;
+  transform: rotate(290deg);
+  transform-origin: top right;
+
+}
+
+.short{
+    color: white;
+    font-family: oswald;
+    max-width: 400px;
+    margin-left: 50px;
+    margin-top: 0px;
+}
+
+.image{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0px;
+    margin-left: 70px;
+}
+.image1{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px;
+}
+
+.image2{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px;
+}
+.img{
+    width: 250px;
+    height: 180px;
+}
+
+
+
+.logo{
+    width: 33%;
+    margin-top: -14%;
+}
+
+.top{
+    height: 60px;
+    margin-bottom: 60px;
+}
+
+.title{
+    color: white;
+    font-family: oswald;
+    font-weight: 400;
+    font-size: 40px;
+    margin-left: 50px;
+    margin-top: -20px;
+}
+
+.continue{
+        background-color: rgb(1, 149, 235);
+        border: solid;
+        border-color: rgb(2, 2, 2);
+        width: 200px;
+        height: 50px;
+        border-radius: 5px;
+        margin-left: 17%;
+        font-size: 20px;
+        color: white;
+        font-weight: 600;
+        margin-top: 10px;;
+    }
+
+.continue:active {
+  background-color: #104a91;  
+  transform: scale(0.98);    
+}
+    .continue:hover{
+        background-color: white;
+        color: rgb(1, 149, 235);
+        border-color: rgb(1, 149, 235);
+    }
+
+    .button1{
+        position: absolute;
+        margin-left: 48%;
+        margin-top: 10px;
+        background-color: rgb(1, 149, 235);
+        font-size: 15px;
+        color: white;
+        font-weight: 400;
+        border: solid;
+        border-color: rgb(2, 2, 2);
+        width: 100px;
+        height: 40px;
+    }
+
+    .button1:active {
+  background-color: #104a91;  
+  transform: scale(0.98);    
+}
+    .button1:hover{
+        background-color: white;
+        color: rgb(1, 149, 235);
+        border-color: rgb(1, 149, 235);
+    }
+
+       .button2{
+        position: absolute;
+        margin-left: 58%;
+        margin-top: 10px;
+        background-color: rgb(1, 149, 235);
+        font-size: 15px;
+        color: white;
+        font-weight: 400;
+        border: solid;
+        border-color: rgb(2, 2, 2);
+        width: 100px;
+        height: 40px;
+    }
+
+    .button2:active {
+  background-color: #104a91;  
+  transform: scale(0.98);    
+}
+    .button2:hover{
+        background-color: white;
+        color: rgb(1, 149, 235);
+        border-color: rgb(1, 149, 235);
+    }

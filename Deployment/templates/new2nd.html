@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>StrokeDetect</title>
+  <link rel="stylesheet" href="{{url_for('static',  path = 'new2nd.css')}}">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+  <header>
+    <img src="{{url_for('static',path = 'logo2.png')}}" alt="image" class="logo">
+  </header>
+  
+  <div class="image-input-container">
+    <form onsubmit="event.preventDefault(); SendImage();">
+      <fieldset>
+      <div>
+        <img class="plus", src="{{url_for('static',path = 'pluslo.jpg')}}" alt="">
+        <div class="submit">
+            <div class="pre">
+                <img id="preview-img" alt="">
+            </div>
+
+            <div class="dets">
+              <div class="txt">
+                <h4>Please Click the Button Below To Submit Selected Image </h4>
+                <img src="{{url_for('static',path = 'arrow.gif')}}" alt="" class="arrow">
+              </div>
+              <div>
+                <input type="submit", value="Submit Image" class="upload">
+              </div>
+                
+            </div>
+        </div>
+      </div>
+
+    </fieldset>
+    </form>
+
+    <div id="result-tab" class="fade-in-text">
+          
+    </div>
+        
+  </div>
+  <script>
+    const imgData = localStorage.getItem("uploadedImage");
+    if (imgData){
+        document.getElementById('preview-img').src = imgData;
+    }
+
+    else{
+        document.body.innerHTML = "<h3>No image uploaded</h3>";
+    }
+
+     function dataURLtoFile(dataurl, filename) {
+        const arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+              bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+        for (let i = 0; i < n; i++) {
+            u8arr[i] = bstr.charCodeAt(i);
+        }
+        return new File([u8arr], filename, {type:mime});
+    }
+
+     async function SendImage() {
+        const base64Image = localStorage.getItem("uploadedImage");
+        if (!base64Image) {
+            alert("No image found.");
+            return;
+        }
+
+        const imageFile = dataURLtoFile(base64Image, "upload.png");
+        const formData = new FormData();
+        formData.append("scan", imageFile);
+
+        const response = await fetch("/predict", {
+            method: "POST",
+            body: formData
+        });
+
+        const resultHtml = await response.text();
+        document.getElementById('result-tab').innerHTML = resultHtml;
+      }
+  </script>
+</body>
+</html>

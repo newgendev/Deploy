@@ -1,0 +1,65 @@
+.explainability {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 77%;
+    height: 360px;
+
+    margin-top: 20px;
+    margin-left: 135px;
+}
+
+#gradcam-img{
+      margin-top: 5%;
+        width: 400px;
+        height: 300px;
+        margin-left: 20px;
+        display: flex;
+}
+
+#saliency-img{
+      margin-top: 5%;
+        width: 400px;
+        height: 300px;
+        margin-left: 20px;
+        display: flex;
+}
+
+.saliency_name{
+    text-align: center;
+    font-family: oswald;
+    font-weight: bold;
+    margin-top: 2px;
+    text-decoration: underline;
+}
+
+.gradcam_name{
+    text-align: center;
+    font-family: oswald;
+    font-weight: bold;
+    margin-top: 2px;
+    text-decoration: underline;
+}
+
+ .home{
+        background-color: rgb(1, 149, 235);
+        border: solid;
+        border-color: rgb(2, 2, 2);
+        width: 200px;
+        height: 50px;
+        border-radius: 5px;
+        margin-left: 0%;
+        margin-top: 5%;
+        font-size: 20px;
+        color: white;
+        font-weight: 600;
+    }
+
+.home:active {
+  background-color: #104a91;  
+  transform: scale(0.98);    
+}
+.home:hover{
+    background-color: white;
+    color: rgb(1, 149, 235);
+    border-color: rgb(1, 149, 235);
+}

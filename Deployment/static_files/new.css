@@ -1,0 +1,124 @@
+  @media (max-width: 600px) {
+    .container {
+      grid-template-columns: 1fr; /* 1 column for small screens */
+    }
+}
+  body {
+      margin: 0;
+      background-color: white;
+      font-family: Arial, sans-serif;
+      display: flexbox;
+    }
+
+     header{
+        color: black;
+        background-color: white;
+        margin-top: 0%;
+        height: 60px;
+        border: solid;
+        border-color: white;
+        border-bottom-color:rgb(210, 210, 210);
+        display: flexbox;
+    }
+    h1{
+        margin-top: 0%;
+        position: fixed;
+        font-size: 25px;
+        margin-left: 3%;
+    }
+
+    .image-input-container{
+        display: flexbox;
+    }
+
+    fieldset{
+        width: 50%;
+        height: 400px;
+        align-items: center;
+        margin: auto;
+        margin-top: 50px;
+        display: flexbox;
+    }
+
+    i{
+     font-size: 340px;
+     margin: auto;
+    }
+    h2{
+        margin-top: 50px;
+        text-align: center;
+        color: rgb(173, 173, 173);
+        font-family: oswald;
+        font-weight: 400;
+        font-size: 40px;
+    }
+
+    h3{
+        margin-top: -6%;
+         text-align: center;
+        color: black;
+        font-family: oswald;
+        font-weight: 400;
+        font-size: 40px;
+        color: rgb(173, 173, 173);
+    }
+    .upload{
+        background-color: rgb(1, 149, 235);
+        border: solid;
+        border-color: white;
+        width: 200px;
+        height: 50px;
+        border-radius: 5px;
+        margin-left: 200px;
+        margin-top: -10%;
+        font-size: 20px;
+        color: white;
+        font-weight: 600;
+    }
+
+    
+.upload:active {
+  background-color: #104a91;  
+  transform: scale(0.98);    
+}
+    .upload:hover{
+        background-color: white;
+        color: rgb(1, 149, 235);
+        border-color: rgb(1, 149, 235);
+    }
+    .p{
+        text-align: center;
+        font-weight: 400;
+        font-size: 20px;
+        margin-left: 30px;
+        margin-top: 60px;
+        font-weight: bold;
+    }
+    .plus{
+        width: auto;
+        height: 30px;
+        margin-left: 440px;
+        margin-bottom: -8%;
+    }
+
+    .logo{
+        width: 33%;
+        margin-top: -14%;
+        margin-left: -2%;
+    }
+    #image{
+        display: none;
+    }
+
+    #preview-img{
+        margin-top: -260px;
+        width: 50%;
+        height: 50%;
+        display: none;
+       
+        
+    }
+
+    .submit{
+        margin-top: -50%;
+    }

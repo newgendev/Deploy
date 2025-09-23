@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>results</title>
+    <link rel="stylesheet" href="{{url_for('static',  path = 'result.css')}}">
+</head>
+<body>
+    <div id="result-tab" class="fade-in-text">
+          <p>{{result}}</p>
+        </div>
+
+    <div class = "explainability">
+      <div class = "gradcam">
+         <img id="gradcam-img" src="{{img_path}}" alt="">
+         <p class="gradcam_name">GradCam</p>
+      </div>
+      <div class="saliencymap">
+         <img id="saliency-img" src ="{{sal_path}}" alt="">
+         <p class="saliency_name">Saliency Map</p>
+      </div>
+    </div>
+
+    <div>
+        <div>
+           <a href="/home"><input type="button" value="Back to home" class="home"></a>
+        </div>
+    </div>
+</body>
+</html>
