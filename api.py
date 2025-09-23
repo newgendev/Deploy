@@ -14,8 +14,8 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="Deployment/static_files"), name="static")
 templates = Jinja2Templates(directory="Deployment/templates")
 
-model = tf.keras.models.load_model("Deployment/SavedModels/Best.keras")
-clmodel = tf.keras.models.load_model("Deployment/SavedModels/good_model.keras")
+model = tf.keras.models.load_model("Deployment/SavedModels/model.tflite")
+clmodel = tf.keras.models.load_model("Deployment/SavedModels/good_model.tflite")
 class_names = ["Non-CT","Normal", "Stroke"]
 clf_class_names = ["Haemorrhgic Stroke", "Ischemic Stroke"]
 
