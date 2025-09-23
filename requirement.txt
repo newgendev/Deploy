@@ -1,0 +1,17 @@
+# Core FastAPI
+fastapi==0.117.1
+uvicorn==0.36.0
+python-multipart==0.0.6
+
+# ML/Image Processing
+tensorflow==2.19.0
+numpy==1.26.4
+opencv-python-headless==4.11.0.86
+pillow==10.2.0
+matplotlib==3.8.0
+
+# Authentication (if you use JWT)
+python-jose==3.3.0
+
+# Utilities
+python-dotenv==1.0.0
