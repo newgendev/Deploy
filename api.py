@@ -23,10 +23,6 @@ interpreter.allocate_tensors()
 cl_interpreter = tf.lite.Interpreter(model_path="Deployment/SavedModels/good_model.tflite")
 cl_interpreter.allocate_tensors()
 
-# Keras models 
-gradcam_model = tf.keras.models.load_model("Deployment/SavedModels/Best.keras")
-cl_gradcam_model = tf.keras.models.load_model("Deployment/SavedModels/good_model.keras")
-
 # Class labels
 class_names = ["Non-CT", "Normal", "Stroke"]
 clf_class_names = ["Haemorrhgic Stroke", "Ischemic Stroke"]
@@ -52,70 +48,6 @@ def tflite_predict(interpreter, img):
     interpreter.invoke()
     return interpreter.get_tensor(output_details[0]['index'])
 
-
-def compute_gradcam(model, img, predicted_class_index):
-    """Compute Grad-CAM heatmap"""
-    resnet_model = model.get_layer("resnet50")
-    last_conv_layer = resnet_model.get_layer("conv5_block3_out")
-
-    grad_model = tf.keras.models.Model(
-        inputs=resnet_model.input,
-        outputs=[last_conv_layer.output, resnet_model.output]
-    )
-
-    with tf.GradientTape() as tape:
-        conv_outputs, predictions = grad_model(img)
-        loss = predictions[:, int(predicted_class_index)]
-
-    grads = tape.gradient(loss, conv_outputs)
-    pooled_grads = tf.reduce_mean(grads, axis=(0, 1, 2))
-
-    conv_outputs = conv_outputs[0].numpy()
-    pooled_grads = pooled_grads.numpy()
-
-    for i in range(pooled_grads.shape[-1]):
-        conv_outputs[:, :, i] *= pooled_grads[i]
-
-    heatmap = np.mean(conv_outputs, axis=-1)
-    heatmap = np.maximum(heatmap, 0)
-    heatmap /= np.max(heatmap) + 1e-8
-
-    return heatmap
-
-
-def overlay_heatmap(img, heatmap, alpha=0.4):
-    """Overlay Grad-CAM heatmap on original image"""
-    original_img = img[0].astype(np.uint8)
-    heatmap = cv2.resize(heatmap, (img.shape[2], img.shape[1]))
-    heatmap = np.uint8(255 * heatmap)
-    heatmap = cv2.applyColorMap(heatmap, cv2.COLORMAP_JET)
-    superimposed_img = cv2.addWeighted(original_img, alpha, heatmap, 1 - alpha, 0)
-
-    filename = f"gradcam_{uuid.uuid4().hex}.png"
-    output_path = os.path.join("Deployment/static_files/outputs", filename)
-    cv2.imwrite(output_path, superimposed_img)
-
-    return f"/static/outputs/{filename}"
-
-
-def saliency_map(model, img_tensor, predicted_class_index):
-    """Generate saliency map"""
-    with tf.GradientTape() as tape:
-        tape.watch(img_tensor)
-        predictions = model(img_tensor)
-        loss = predictions[:, predicted_class_index]
-
-    grads = tape.gradient(loss, img_tensor)[0]
-    saliency = tf.reduce_max(tf.abs(grads), axis=-1)
-
-    filename = f"saliency_{uuid.uuid4().hex}.png"
-    output_path = os.path.join("Deployment/static_files/saliency", filename)
-    plt.imshow(saliency, cmap='coolwarm')
-    plt.axis("off")
-    plt.savefig(output_path, bbox_inches='tight', pad_inches=0)
-    plt.close()
-
-    return f"/static/saliency/{filename}"
 
 
 @app.get("/get", response_class=HTMLResponse)
