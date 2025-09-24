@@ -111,7 +111,7 @@ termcolor==1.1.0
 tf-keras-vis==0.8.7
 tf2onnx==1.16.1
 threadpoolctl==3.6.0
-tifffile==2023.11.0
+tifffile==2023.9.26
 tornado==6.4.2
 tqdm==4.67.1
 traitlets==5.14.3
